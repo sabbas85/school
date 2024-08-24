@@ -1,4 +1,3 @@
-// import UserCard from "@/components/UserCard"
 import Image from "next/image"
 
 const UserCard = ({type}:{type:string}) => {
