@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+// install library recharts
 
 const data = [
   {
