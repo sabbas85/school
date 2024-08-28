@@ -28,11 +28,6 @@ type Parent = {
       className: "hidden md:table-cell",
     },
     {
-      header: "Grade",
-      accessor: "grade",
-      className: "hidden md:table-cell",
-    },
-    {
       header: "Phone",
       accessor: "phone",
       className: "hidden lg:table-cell",

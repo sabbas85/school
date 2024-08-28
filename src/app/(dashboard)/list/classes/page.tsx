@@ -3,24 +3,37 @@ import Image from "next/image";
 import Pagination from "@/components/Pagination"
 import Table from "@/components/Table";
 import Link from "next/link";
-import { role, subjectsData } from "@/lib/data";
+import { classesData, role } from "@/lib/data";
 
-type Subject = {
+type Class = {
+    capacity: number;
     id: number;
     name: string;
-    teachers: string[];    
+    teachers: string[];
+    grade: number;
+    supervisor: string; 
   };
   
   const columns = [
     {
-      header: "Subject Name",
+      header: "Class Name",
       accessor: "name",
     },
     {
-      header: "Teachers",
-      accessor: "teachers",
+      header: "Capacity",
+      accessor: "capacity",
       className: "hidden md:table-cell",
     },
+    {
+        header: "Grade",
+        accessor: "grade",
+        className: "hidden md:table-cell",
+      },
+      {
+        header: "Supervisor",
+        accessor: "supervisor",
+        className: "hidden md:table-cell",
+      },
     {
       header: "Actions",
       accessor: "action",
@@ -28,14 +41,16 @@ type Subject = {
   ];
 
 
-  const SubjectListPage = () => {
-    const renderRow = (item: Subject) => (
+  const ClassListPage = () => {
+    const renderRow = (item: Class) => (
       <tr
         key={item.id}
         className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
       >
         <td className="flex items-center gap-4 p-4">{item.name}</td>
-        <td className="hidden md:table-cell">{item.teachers.join(",")}</td>
+        <td className="hidden md:table-cell">{item.capacity}</td>
+        <td className="hidden md:table-cell">{item.grade}</td>
+        <td className="hidden md:table-cell">{item.supervisor}</td>
         <td>
           <div className="flex items-center gap-2">
             <Link href={`/list/students/${item.id}`}>
@@ -77,11 +92,11 @@ type Subject = {
             </div>
         </div>
         {/* List  */}
-        <Table columns={columns} renderRow={renderRow} data={subjectsData} />
+        <Table columns={columns} renderRow={renderRow} data={classesData} />
         {/* Pagination  */}
         <Pagination />    
       </div>
     )
   }
   
-  export default SubjectListPage
+  export default ClassListPage
